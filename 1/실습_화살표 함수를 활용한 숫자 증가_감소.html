@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습_화살표 함수를 활용한 숫자 증가_감소</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body{color: #333;}
+    .p01{
+      margin:0px 30px 0px 0px;
+    }
+    .box_top{
+      margin: 0 auto;
+      display: flex;
+      /* border:1px solid #ccc; */
+      /* position:relative; */
+      width:600px;
+      /* text-align: center; */
+    }
+    .box_right{
+      /* position: absolute; */
+      /* right:0px; */
+      border:1px solid #e6e4e4;
+      width:500px;
+    }
+    .box_inner_top{
+      display: flex;
+      width:600px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    .box_inner_bottom{
+      /* display: flex; */
+      /* justify-content: space-between; */
+      float:left;
+      padding: 5px 10px 30px 10px;
+    }
+    #btn{
+      width:30px;height:30px;
+      border:none;
+      background:#fff;
+      color:#8d8989;
+      margin-top:13px;
+      margin-left: 290px;
+      font-size: 18px;
+    }
+    .box_bottom{
+      margin: 0 auto;
+      width:600px;
+    }
+    .p02{
+      text-align: right;
+      margin-right:10px;
+    }
+    #price{
+      font-size:24px;
+      font-weight:bold;
+    }
+    .cart_btn{
+      margin-left:30px;
+      display: inline-block;
+      width: 450px;
+      background: purple;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      padding: 13px 0px;
+      border-radius: 3px;
+    }
+    .cart_btn_box > button{
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: purple;
+      font-size: 24px;
+    }
+    i.fa-bell{
+      color:#ccc;
+    }
+    select{
+      width:500px;
+      padding: 10px;
+    }
+    .item_price span:first-child{
+      text-decoration: line-through;
+      font-size: 12px;
+      color:#8d8989
+    }
+    .count_box{
+      display: flex;
+      justify-content: space-around;
+      border: 1px solid #ccc;
+      text-align: center;
+      width:60px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .item_price{font-weight: bold;margin-left:350px;}
+    #minus, #plus{cursor:pointer;}
+    #order_box{display:none;}
+  </style>
+</head>
+<body>
+  <h2>실습_화살표 함수를 활용한 숫자 증가_감소</h2>
+  <div>
+    <div class="box_top">
+      <p class="p01">구매수량</p>
+      <div class="box_right">
+        <select id="productSelect">
+          <option value="">상품을 선택해주세요</option>
+          <option value="19900">유명산지 설향딸기 500g</option>
+          <option value="15000">홍희 딸기 500g</option>
+        </select>
+        <div id="order_box">
+          <div class="box_inner_top">
+            <p>유명산지 설향딸기 500g</p>
+            <button id="btn"><i class="fa-solid fa-x"></i></button>
+          </div>
+          <div class="box_inner_bottom">
+            <div class="count_box">
+              <span id="minus">-</span>
+              <span id="num">1</span>
+              <span id="plus">+</span>
+            </div>
+        </div>
+          
+          <div class="item_price">
+            <span>22,900원</span>
+            <span id="itemPriceDP"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box_bottom">
+      <div>
+        <p class="p02">총 상품금액: <span id="price"></span>원</p>
+        <div class="cart_btn_box">
+          <button><i class="fa-regular fa-heart"></i></button>
+          <button><i class="fa-regular fa-bell"></i></button>
+          <a href="#" title="장바구니 담기" class="cart_btn">장바구니 담기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script>
+    const a = () =>{
+      const minus = document.getElementById('minus');
+      const num = document.getElementById('num');
+      const plus = document.getElementById('plus');
+      const price = document.getElementById('price');
+
+      let count = 1;
+      const priceValue = 15900;
+
+      plus.addEventListener("click", () => {
+        count++;
+        num.textContent = count;
+
+        const totalPrice = count * priceValue;
+        price.textContent = totalPrice.toLocaleString();
+      });
+
+      minus.addEventListener("click", () => {
+        count--;
+        num.textContent = count;
+
+        const totalPrice = count * priceValue;
+        price.textContent = totalPrice.toLocaleString();
+      });
+    };
+    a();
+    
+
+  </script> -->
+  <script>
+    const productSelect = document.getElementById('productSelect');
+    //수량박스
+    const order_box = document.getElementById('order_box');
+    //감소버튼
+    const minus = document.getElementById('minus');
+    //증가버튼
+    const plus = document.getElementById('plus');
+    //수량변경
+    const num = document.getElementById('num');
+    const btn = document.getElementById('btn');
+    //총상품금액 변수
+    const totalPricePrice = document.getElementById('price');
+    const itemPriceDP = document.getElementById('itemPriceDP');
+
+    let quantity = 1;//수량 초기값
+    let basePrice = 0;//금액초기값
+
+    //선택목록에서 상픔을 선택하면 해당 값을 변수에 담는다.
+    productSelect.addEventListener('change' , function(){
+      if(this.value===''){
+        order_box.style.display='none';
+        return;
+      }else{
+        order_box.style.display='block';
+        quantity = 1;
+        num.innerText = quantity;
+        basePrice = Number(this.value);
+        price.innerText = basePrice.toLocaleString();
+      }
+    });
+    //
+    
+
+    
+
+    
+
+    plus.addEventListener('click', ()=>{
+      // alert('수량증가');
+      quantity++; //1씩증가
+      updatePrice();
+    });
+    minus.addEventListener('click', ()=>{
+      // alert('수량감소');
+      if(quantity>1){
+        quantity--; //1씩감소
+        updatePrice();
+      }
+        
+    });
+
+    function updatePrice(){
+      num.innerText = quantity;
+      totalPricePrice.innerText = (basePrice * quantity).toLocaleString();
+
+      itemPriceDP.innerText = basePrice.toLocaleString() + "원";
+    }
+
+    btn.addEventListener('click', ()=>{
+      order_box.style.display='none';
+      quantity = 1;
+      basePrice = 0;
+      price.innerText=basePrice;
+    });
+  </script>
+</body>
+</html>

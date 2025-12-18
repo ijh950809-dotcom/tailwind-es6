@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>es6문법_02_시간객체(setInterval_setTimeOut)</title>
+  <style>
+    #clock{
+      color: #00f;font-size:30px;
+    }
+    #dday{color:#f00;font-size:40px;}
+  </style>
+</head>
+<body>
+  <h2>es6문법_02_시간객체(setInterval_setTimeOut)</h2>
+  <p>날짜 와 시간에 관련된 객체명? new Date();</p>
+  <p>시간함수 setTimeOut();</p>
+
+  <h3>실시간 디지털 시계</h3>
+  <div id="clock"></div>
+
+  <script>
+    //1. 사용자정의함수
+    function startTime(){
+      let today = new Date();
+
+      let h =checknum(today.getHours());
+      let m =(today.getMinutes());
+      let s =(today.getSeconds());
+
+      //년월일시분초를 출력
+      // document.write(today.getFullYear()+'년<br>');
+      // document.write(today.getMonth()+'월<br>');
+      // document.write(today.getDate()+'일<br>');
+      // document.write(today.getDay()+'요일<br>');
+      let yoil = ['일', '월', '화', '수', '목', '금', '토'];
+      // document.write(yoil[today.getDay()]+'요일(요일로 변경하여 출력)<br>');
+      // let h = document.write(today.getHours()+'시<br>');
+      // let m = document.write(today.getMinutes()+'분<br>');
+      // let s = document.write(today.getSeconds()+'초<br>');
+      // document.write(today.getMilliseconds()+'밀리초<br>');
+
+      h = checknum(h);
+      m = checknum(m);
+      s = checknum(s);
+
+      //시분초 출력하기
+      document.getElementById('clock').innerHTML=h + ':' + m + ':' +s;
+
+      let t = setTimeout(startTime, 500);
+    }
+
+    startTime();
+
+    function checknum(a){
+      if(a<10){
+        a = '0' + a;
+      }
+      return a;
+}    
+  </script>
+
+  <h2>D-day값 설정하기</h2>
+  <p>사용자가 설정한 날짜에 맞춰 현재 날짜를 계산하여 남은 일수 구하기</p>
+  <p>시작날짜  : 2025-08-14, 끝나는 날짜 : 2025-02-20</p>
+  <p>D-day :  끝나는 날짜 - 시작 날짜</p>
+
+  <div id="dday"></div>
+  <p>월 출력시 0-11까지이기 때문에 기존값에 1을 더해야함.</p>
+
+
+
+  <h3>실습하기 - 자신의 태어난 날짜를 기준으로 현재까지 ??일인지 알아보기</h3>
+  <div id="dday2"></div>
+
+  <h3>실습하기 - 내년 생일까지 몇일 남았는지? 알아보기</h3>
+  <div id="dday3"></div>
+
+
+  <script>
+    //1. 변수선언
+    let today = new Date();//날짜객체 생성하기
+    let day = new Date(2026,2,20);//종료날짜
+    let birthday = new Date(1995,8,9);
+    let mybirthday = new Date(2026,8,9);
+
+    let m = today.getMonth()+1;//현재월
+
+    let gap = day.getTime() - today.getTime();//특정날짜 -  현재날짜
+    console.log(day);
+    console.log(gap);//1시간 = 60분 ,1분 = 60 60*60 = 3600초 3600*???=7978211732초
+
+    let res = Math.ceil(gap/(1000*60*60*24))-30;//일수 계산하는 공식
+    console.log(res);//63일
+
+    document.getElementById('dday').innerHTML='D-day까지 <strong>'+ res +'</strong>일 남았습니다.';
+    ///////////////////////////////////////dday2
+    let gap2 = today.getTime() - birthday.getTime();
+    console.log(birthday);
+    console.log(gap2);
+
+    let res2 = Math.floor(gap2/(1000*60*60*24)-30);//일수 계산하는 공식
+    console.log(res2);//
+
+    document.getElementById('dday2').innerHTML='태어날 날로부터 <strong>'+ res2 +'</strong>일 되었습니다.';
+    ///////////////////////////////////////////////dday3
+    let gap3 = mybirthday.getTime() - today.getTime();
+    console.log(mybirthday);
+    console.log(gap3);
+
+    let res3 = Math.floor(gap3/(1000*60*60*24))-30;//일수 계산하는 공식
+    console.log(res3);//
+
+    document.getElementById('dday3').innerHTML='내년 생일까지 <strong>'+ res3 +'</strong>일 남았습니다.';
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_파리바게트</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    .scrollbar-hide {
+      -ms-overflow-style: none; /* IE, Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+    .scroll-x{-webkit-overflow-scrolling: touch;}
+    .scroll-x::-webkit-scrollbar{display:none;}
+  </style>
+</head>
+<body>
+  <!-- 가로 슬라이드 전체 박스 -->
+  <h2 class="px-3 font-extrabold text-2xl">PROMOTION</h2>
+
+  <div class="flex gap-4 cont_wrap snap-x scrollbar-hide overflow-x-auto">
+
+    <!-- <button id="left_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </button> -->
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3">
+        <a href="#" title="프로모션1">
+          <img src="./images/1107_2025홀리데이_베리밤-고블렛잔-굿즈-프로모션-페이지_1000x1000-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/251114_홀리데이케이크_사전예약_1000x1000-2-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3  snap-start">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/251208_베리밤케이크-3종-사전예약-프로모션_썸네일-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/0910_파란라벨-런치보냉백-증정-프로모션_썸네일_1000x1000-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/1000x1000-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/251204_12월-선물류-증정-프로모션_썸네일_1000x1000-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/더피케이크_썸네일_1000x1000-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- 개별박스 -->
+    <div class="cont snap-start shrink-0 w-72">
+      <!-- 사진박스 -->
+      <div class="px-3 py-3  ">
+        <a href="#" title="프로모션1">
+          <img src="./images/thum-600x600.jpg" alt="프로모션1">
+        </a>
+      </div>
+      <!-- 텍스트 박스 -->
+      <div class="px-3 ">
+        <p class="font-bold">베리밤 케이크 3종 출시 사전예약 혜택</p>
+        <span class="text-xs text-gray-500">READ MORE</span>
+      </div>
+    </div>
+
+    <!-- <button id="right_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>      
+    </button> -->
+  </div>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    const left_btn = $('#left_btn');
+    const right_btn = $('#right_btn');
+    const cont = $('.cont')
+
+    $('.cont_wrap cont:last-child').insertBefore('.cont_wrap cont:first-child');
+  </script> -->
+</body>
+</html>
